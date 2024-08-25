@@ -1,0 +1,6 @@
+#!/bin/bash
+gdbus monitor -y -d org.freedesktop.login1 | awk '
+/LockedHint/ && /<true>/ { print "lampster off\n"; fflush(STDOUT); }
+/LockedHint/ && /<false>/ { print "lampster on\n"; fflush(STDOUT); }
+'  | bash #-v
+

@@ -1,0 +1,33 @@
+#! /bin/bash
+#
+
+show_retries=0
+
+if [ "$1" = "-t" ]; then
+	show_retries=1
+	shift
+fi
+
+trycommand() {
+	for i in {1..5}; do 
+		#echo "executing: $@"
+		if $@ >/dev/null 2>&1; then
+			return 0
+		elif [ $show_retries -gt 0 ]; then
+			echo "failed (#$i)"
+		fi
+	done
+	return 1
+}
+
+case $1 in 
+	off )
+		trycommand gatttool --device=C0:00:00:04:5B:91 --char-write-req -a 0x0021 -n 40
+		;;
+	on )
+		trycommand gatttool --device=C0:00:00:04:5B:91 --char-write-req -a 0x0021 -n c8
+		;;
+	* )
+		echo "Usage: $0 [-t] [on|off]"
+		;;
+esac
