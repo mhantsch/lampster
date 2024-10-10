@@ -1,0 +1,15 @@
+C0:00:00:04:5B:91 Lampster Bluetooth MAC
+
+See: https://github.com/Noki/the-lampster
+
+$ gatttool --device=C0:00:00:04:5B:91 --char-write-req -a 0x0021 -n 40   # turn off
+Characteristic value was written successfully
+$ gatttool --device=C0:00:00:04:5B:91 --char-write-req -a 0x0021 -n c8   # turn on, white
+Characteristic value was written successfully
+$ gatttool --device=C0:00:00:04:5B:91 --char-write-req -a 0x0025 -n 3030 # set white colour WWCC
+Characteristic value was written successfully                            # (warm/cold), 0-64=0-100%
+
+gatttool commands may need to be repeated; 
+I sometimes get error "connect to C0:00:00:04:5B:91: Function not implemented (38)"; 
+but if you try again it usually works.
+
