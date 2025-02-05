@@ -68,7 +68,7 @@ Once you are in WHITE mode you can adjust the warm white and cold white LEDs wit
 
 | command | description |
 | --- | --- |
-| char-write-cmd 0x0025 WWCC  WW for warm white LEDs, CC for cold white LEDs
+| char-write-cmd 0x0025 WWCC | WW for warm white LEDs, CC for cold white LEDs |
 
 The values seem to be Hex and range from 00 to 64 (0 to 100%).
 | command | description |
