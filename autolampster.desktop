@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=AutoLampster
+Exec=/usr/local/bin/autolampster-cosmic.py
+X-COSMIC-Autostart=true
+Terminal=false
